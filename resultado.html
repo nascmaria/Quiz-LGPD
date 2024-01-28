@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado - Quiz LGPD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Resultado do Quiz:</h1>
+        <div id="resultado-texto"></div>
+
+        <button onclick="retornarAoInicio()">Retornar ao Início</button>
+    </div>
+
+    <script>
+        function obterResposta(pergunta) {
+            return localStorage.getItem("resposta" + pergunta) || "Não respondida";
+        }
+
+        function verificarResultado() {
+            const respostasCorretas = ["b", "a", "b", "c", "a"];
+            const numeroPerguntas = respostasCorretas.length;
+
+            let pontuacao = 0;
+
+            for (let i = 1; i <= numeroPerguntas; i++) {
+                const respostaUsuario = obterResposta(i);
+                const respostaCorreta = respostasCorretas[i - 1];
+
+                if (respostaUsuario === respostaCorreta) {
+                    pontuacao++;
+                }
+            }
+
+            const porcentagemAcertos = (pontuacao / numeroPerguntas) * 100;
+
+            const resultadoTexto = document.getElementById("resultado-texto");
+            resultadoTexto.innerHTML = "<p>Quantidade de acertos: " + pontuacao + " de " + numeroPerguntas + ".</p>";
+            resultadoTexto.innerHTML += "<p>Porcentagem de acertos: " + porcentagemAcertos.toFixed(2) + "%.</p>";
+
+            if(porcentagemAcertos < 100.00) {
+                alert("Oh, não! Seus dados foram violados! 👀🔓💥❗");
+            }
+            else {
+                alert("Dados protegidos com sucesso! ✅🔒😄")
+            }
+        }
+
+        function retornarAoInicio() {
+            localStorage.clear();
+            window.location.href = "index.html";
+        }
+
+        window.onload = verificarResultado;
+    </script>
+</body>
+</html>

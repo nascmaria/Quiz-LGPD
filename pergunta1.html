@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta 1 - Quiz LGPD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Pergunta 1</h1>
+        <p>Qual o significado da sigla LGPD?</p>
+        
+        <form onsubmit="return checkAnswer()">
+            <input type="radio" name="resposta" value="a" id="opcaoA">
+            <label for="opcaoA">A) Lei Geral de Prevenção Digital</label><br>
+
+            <input type="radio" name="resposta" value="b" id="opcaoB">
+            <label for="opcaoB">B) Lei Geral de Proteção de Dados</label><br>
+
+            <input type="radio" name="resposta" value="c" id="opcaoC">
+            <label for="opcaoC">C) Lei Global de Privacidade Digital</label><br>
+
+            <button type="submit">Próxima Pergunta</button>
+        </form>
+
+        <script>
+            function checkAnswer() {
+                var respostaEscolhida = document.querySelector('input[name="resposta"]:checked');
+
+                if (!respostaEscolhida) {
+                    alert("Por favor, escolha uma opção antes de avançar.");
+                    return false;
+                }
+
+                localStorage.setItem("resposta1", respostaEscolhida.value);
+
+                window.location.href = "pergunta2.html";
+
+                return false;
+            }
+        </script>
+    </div>
+</body>
+</html>

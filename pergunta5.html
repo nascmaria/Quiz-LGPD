@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta 5 - Quiz LGPD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Pergunta 5</h1>
+        <p>Quais são as penalidades previstas pela LGPD para quem descumprir suas disposições?</p>
+        
+        <form onsubmit="return checkAnswer()">
+            <input type="radio" name="resposta" value="a" id="opcaoA">
+            <label for="opcaoA">A) Advertências, multas e suspensão do banco de dados</label><br>
+
+            <input type="radio" name="resposta" value="b" id="opcaoB">
+            <label for="opcaoB">B) Apenas advertências verbais</label><br>
+
+            <input type="radio" name="resposta" value="c" id="opcaoC">
+            <label for="opcaoC">C) Nenhuma penalidade</label><br>
+
+            <button type="submit">Verificar Resultado</button>
+        </form>
+
+        <script>
+            function checkAnswer() {
+                var respostaEscolhida = document.querySelector('input[name="resposta"]:checked');
+
+                if (!respostaEscolhida) {
+                    alert("Por favor, escolha uma opção antes de verificar o resultado.");
+                    return false;
+                }
+
+                localStorage.setItem("resposta5", respostaEscolhida.value);
+
+                window.location.href = "resultado.html";
+
+                return false;
+            }
+        </script>
+    </div>
+</body>
+</html>

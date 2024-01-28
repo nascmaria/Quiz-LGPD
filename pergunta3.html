@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta 3 - Quiz LGPD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Pergunta 3</h1>
+        <p>Quem é responsável pelo tratamento de dados pessoais, segundo a LGPD?</p>
+        
+        <form onsubmit="return checkAnswer()">
+            <input type="radio" name="resposta" value="a" id="opcaoA">
+            <label for="opcaoA">A) O titular dos dados</label><br>
+
+            <input type="radio" name="resposta" value="b" id="opcaoB">
+            <label for="opcaoB">B) O controlador dos dados</label><br>
+
+            <input type="radio" name="resposta" value="c" id="opcaoC">
+            <label for="opcaoC">C) O encarregado de dados</label><br>
+
+            <button type="submit">Próxima Pergunta</button>
+        </form>
+
+        <script>
+            function checkAnswer() {
+                var respostaEscolhida = document.querySelector('input[name="resposta"]:checked');
+
+                if (!respostaEscolhida) {
+                    alert("Por favor, escolha uma opção antes de avançar.");
+                    return false;
+                }
+
+                localStorage.setItem("resposta3", respostaEscolhida.value);
+
+                window.location.href = "pergunta4.html";
+
+                return false;
+            }
+        </script>
+    </div>
+</body>
+</html>
